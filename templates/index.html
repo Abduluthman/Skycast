@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SkyCast - Weather App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="glass-container">
+      <h1>☁️ SkyCast</h1>
+
+      <form method="POST">
+        <div class="form-fields">
+          <input type="text" name="city" placeholder="Enter city" required />
+          <select name="country" required>
+            <option value="">Select Country</option>
+            <option value="NG">Nigeria 🇳🇬</option>
+            <option value="GB">United Kingdom 🇬🇧</option>
+            <option value="US">United States 🇺🇸</option>
+            <option value="FR">France 🇫🇷</option>
+            <option value="CA">Canada 🇨🇦</option>
+            <option value="DE">Germany 🇩🇪</option>
+            <option value="IN">India 🇮🇳</option>
+            <option value="KE">Kenya 🇰🇪</option>
+            <option value="ZA">South Africa 🇿🇦</option>
+          </select>
+          <button type="submit">Get Weather</button>
+        </div>
+      </form>
+
+      {% if weather %} {% if weather.error %}
+      <p style="color: red">{{ weather.error }}</p>
+      {% else %}
+      <div class="weather-card">
+        <h2>Current Weather in {{ location.name }}, {{ location.country }}</h2>
+        <img
+          src="https:{{ weather.condition.icon }}"
+          alt="{{ weather.condition.text }}"
+        />
+        <p>{{ weather.condition.text }}</p>
+        <p>🌡 Temperature: {{ weather.temp_c }}°C</p>
+        <p>💧 Humidity: {{ weather.humidity }}%</p>
+        <p>🌬 Wind: {{ weather.wind_kph }} km/h</p>
+      </div>
+      {% endif %} {% endif %} {% if forecast %}
+      <div class="forecast-container">
+        <h3>5-Day Forecast</h3>
+        <div class="forecast-grid">
+          {% for day in forecast %}
+          <div class="forecast-card glass-card">
+            <p><strong>{{ day.date }}</strong></p>
+            <img src="https:{{ day.day.condition.icon }}" alt="icon" />
+            <p>{{ day.day.condition.text }}</p>
+            <p>🌡 Max: {{ day.day.maxtemp_c }}°C</p>
+            <p>🌡 Min: {{ day.day.mintemp_c }}°C</p>
+            <p>💧 Humidity: {{ day.day.avghumidity }}%</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
