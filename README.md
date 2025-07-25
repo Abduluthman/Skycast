@@ -24,31 +24,42 @@ SkyCast is a lightweight, responsive weather forecast application built with **F
 ---
 
 ## 📂 Project Structure
-- SkyCast
-    - app.py # Main Flask app
-- templates/
-    - index.html # HTML layout using Jinja2
-- static/
-    - style.css # Custom CSS styling
-- requirements.txt # Python dependencies
-- README.md # Project documentation
+```bash
+skycast/
+│
+├── app.py                # Flask backend
+├── templates/
+│   └── index.html        # HTML frontend
+├── static/
+│   └── style.css         # Optional: CSS styles
+├── requirements.txt      # Dependencies
+└── README.md             # Project info
+```
+
 ---
 
 ## ▶️ How to Run Locally
 
 1. **Clone or download the repo**:
-   ```bash
-   git clone https://github.com/AbdulUthman/skycast.git
-   cd skycast
+```bash
+git clone https://github.com/AbdulUthman/skycast.git
+cd skycast
+```
 2. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 3. Run the app:
-    ```bash
-    python app.py
+```bash
+python app.py
+```
 4. Open your browser and go to:
-    ```bash
-    http://127.0.0.1:5000/
+```bash
+http://127.0.0.1:5000/
+```
+
+---
+
 ## 📱 Test on Mobile
 To test on your mobile device:
 
@@ -59,12 +70,15 @@ To test on your mobile device:
     python app.py
 4. Visit: http://192.168.1.5:5000 on your mobile browser
 
+---
+
 ## 🔑 API Configuration
 - Update the API key in app.py:
     ```bash
     API_KEY = ''
 - Get your free key at: weatherapi.com
 
+---
 
 ## 📦 Packaging
 To zip the project:
